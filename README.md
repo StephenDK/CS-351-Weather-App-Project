@@ -14,18 +14,19 @@ Searchable History: Users may have the option to access a searchable history of 
 HTML: For structuring the content and layout of the app.
 CSS: For styling and enhancing the visual appearance of the app.
 JavaScript: For fetching data from the weather API and dynamically updating the content of the app.
-Setup Instructions
-Clone the Repository: Clone this repository to your local machine using the following command:
 
-bash
-Copy code
-git clone <repository-url>
-Navigate to Directory: Move into the directory containing the Weather App files:
+## Setup Instructions
+1. **Clone the Repository**: Clone this repository to your local machine using the following command:
+    ```bash
+    git clone <repository-url>
+    ```
 
-bash
-Copy code
-cd weather-app
-Open in Browser: Open the index.html file in your preferred web browser to view the Weather App.
+2. **Navigate to Directory**: Move into the directory containing the Weather App files:
+    ```bash
+    cd weather-app
+    ```
+
+3. **Open in Browser**: Open the `index.html` file in your preferred web browser to view the Weather App.
 
 <h3><b>Usage</b></h3>
 Enter Location: Type the location for which you want to check the weather into the search bar.
@@ -34,13 +35,13 @@ Explore Features: Feel free to explore additional features such as background im
 
 <h3><b>Contributing</b></h3>
 Contributions are welcome! If you'd like to contribute to the Weather App, please follow these steps:
-
-Fork the repository.
-Create a new branch for your feature or bug fix.
-Make your changes and commit them with descriptive messages.
-Push your changes to your fork.
-Submit a pull request, explaining the changes you've made.
-
+<ol type="1">
+<li>Fork the repository.</li>
+<li>Create a new branch for your feature or bug fix.</li>
+<li>Make your changes and commit them with descriptive messages.</li>
+<li>Push your changes to your fork.</li>
+<li>Submit a pull request, explaining the changes you've made.</li>
+</ol>
 <h3><b>License</b></h3>
 This project is licensed under the MIT License. See the LICENSE file for details.
 
