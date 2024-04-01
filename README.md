@@ -55,4 +55,4 @@ This project is licensed under the MIT License. See the LICENSE file for details
 Thank you to the creators of the publicly available weather API for providing the data used in this project.
 Appreciation to all contributors and developers who have helped improve this Weather App.
 Contact
-For any inquiries or support regarding the Weather App, please contact [Your Name] at [your-email@example.com].
+For any inquiries or support regarding the Weather App, please contact Stephen Klein at <a href="mailto:sklein8@horizon.csueastbay.edu">sklein8@horizon.csueastbay.edu</a>.
