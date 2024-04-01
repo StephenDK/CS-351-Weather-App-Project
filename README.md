@@ -4,7 +4,7 @@
 <h3><b>Introduction</b></h3>
 Welcome to the Weather App! This project aims to provide a simple and intuitive way to check the current weather conditions using HTML, JavaScript, and CSS. By fetching data from a publicly available weather API, this app presents the user with up-to-date weather information in an attractive and user-friendly interface.
 
-<b>Features</b>
+<h3><b>Features</b></h3>
 <ul>
 <li>Weather Data Fetching: The app interacts with a publicly available weather API to fetch the latest weather data.</li>
 <li>Dynamic Presentation: Weather information is presented in a visually appealing manner using HTML and CSS.</li>
@@ -55,4 +55,4 @@ This project is licensed under the MIT License. See the LICENSE file for details
 Thank you to the creators of the publicly available weather API for providing the data used in this project.
 Appreciation to all contributors and developers who have helped improve this Weather App.
 Contact
-For any inquiries or support regarding the Weather App, please contact Stephen Klein at <a href="mailto:sklein8@horizon.csueastbay.edu">sklein8@horizon.csueastbay.edu</a>.
+For any inquiries or support regarding the Weather App, please contact <b>Stephen Klein</b> at <a href="mailto:sklein8@horizon.csueastbay.edu">sklein8@horizon.csueastbay.edu</a>.
