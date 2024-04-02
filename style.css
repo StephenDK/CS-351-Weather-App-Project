@@ -47,3 +47,9 @@ html {
 .column-card {
   margin-bottom: 20px;
 }
+
+/* Forcast Header */
+.forcast-header {
+  text-align: center;
+  margin: 10px 0 10px 0;
+}
