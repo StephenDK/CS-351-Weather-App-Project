@@ -22,24 +22,29 @@
       </div>
     </div>
 
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Navbar</a>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="ml-auto">
+          <form class="form-inline my-2 my-lg-0">
+            <input
+              class="form-control mr-sm-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+              Search
+            </button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
     <!-- Location Container -->
     <div class="container" style="max-width: 80%">
-      <form>
-        <div class="form-row">
-          <!-- <label class="sr-only">City</label> -->
-          <div class="col-11">
-            <input
-              type="text"
-              class="form-control"
-              id="city-input"
-              placeholder="Hayward"
-            />
-          </div>
-          <div class="col-1">
-            <button type="submit" class="btn btn-primary mb-2">Search</button>
-          </div>
-        </div>
-      </form>
       <!-- Location Card -->
       <div class="row">
         <div class="col-md-4">
@@ -134,13 +139,13 @@
             </div>
           </div>
         </div>
-        <div class="col-2">
+        <div class="col-lg-2 col-md-12 col-sm-12" style="text-align: center">
           <b>Percipitation: </b>
           <p>39%</p>
           <b>Wind</b>
           <p>12mph</p>
         </div>
-        <div class="col-2">
+        <div class="col-lg-2 col-md-12 col-sm-12" style="text-align: center">
           <b>Sunrise</b>
           <p>6:51am</p>
           <b>Sunset</b>
@@ -148,7 +153,7 @@
         </div>
       </div>
 
-      <div class="row flex-column flex-md-row border">
+      <!-- <div class="row flex-column flex-md-row border">
         <div
           class="col-12 col-md-2 d-flex justify-content-center align-items-center"
         >
@@ -173,7 +178,7 @@
             </div>
           </div>
         </div>
-        <div class="col-2">
+        <div class="col-lg-2 col-md-12 col-sm-12">
           <b>Percipitation: </b>
           <p>39%</p>
           <b>Wind</b>
@@ -185,7 +190,7 @@
           <b>Sunset</b>
           <p>7:56pm</p>
         </div>
-      </div>
+      </div> -->
     </div>
 
     <script
@@ -201,3 +206,23 @@
     <script src="index.js"></script>
   </body>
 </html>
+
+<!-- Extra Content -->
+<!-- 
+<form>
+        <div class="form-row">
+          <label class="sr-only">City</label> 
+          <div class="col-11">
+            <input
+              type="text"
+              class="form-control"
+              id="city-input"
+              placeholder="Hayward"
+            />
+          </div>
+          <div class="col-1">
+            <button type="submit" class="btn btn-primary mb-2">Search</button>
+          </div>
+        </div>
+      </form>
+ -->
