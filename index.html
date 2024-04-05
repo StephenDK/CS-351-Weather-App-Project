@@ -4,7 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>Weather App</title>
-
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Merriweather"
+    />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
@@ -24,7 +27,7 @@
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <p class="nav-text">Weather App</p>
 
       <div class="ml-auto">
         <form class="form-inline my-2 my-lg-0">
@@ -151,7 +154,8 @@
         </div>
       </div>
 
-      <!-- <div class="row flex-column flex-md-row border">
+      <!-- Second Day Forcast -->
+      <div class="row flex-column flex-md-row border">
         <div
           class="col-12 col-md-2 d-flex justify-content-center align-items-center"
         >
@@ -160,15 +164,15 @@
             alt="..."
           />
         </div>
-        <div class="col-6">
+        <div class="col-lg-6 col-md-10 col-sm-10">
           <div class="row">
-            <div class="col-6">
+            <div class="col-6" style="text-align: center">
               <b>Date:</b>
               <p>2024-04-02</p>
               <b>Average Temp:</b>
               <p>14.6</p>
             </div>
-            <div class="col-6">
+            <div class="col-6" style="text-align: center">
               <b>High:</b>
               <p>45</p>
               <b>Low: </b>
@@ -176,19 +180,59 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-2 col-md-12 col-sm-12">
+        <div class="col-lg-2 col-md-12 col-sm-12" style="text-align: center">
           <b>Percipitation: </b>
           <p>39%</p>
           <b>Wind</b>
           <p>12mph</p>
         </div>
-        <div class="col-2">
+        <div class="col-lg-2 col-md-12 col-sm-12" style="text-align: center">
           <b>Sunrise</b>
           <p>6:51am</p>
           <b>Sunset</b>
           <p>7:56pm</p>
         </div>
-      </div> -->
+      </div>
+
+      <!-- Thrid Day Forcast -->
+      <div class="row flex-column flex-md-row border">
+        <div
+          class="col-12 col-md-2 d-flex justify-content-center align-items-center"
+        >
+          <img
+            src="https://cdn.weatherapi.com/weather/64x64/day/116.png"
+            alt="..."
+          />
+        </div>
+        <div class="col-lg-6 col-md-10 col-sm-10">
+          <div class="row">
+            <div class="col-6" style="text-align: center">
+              <b>Date:</b>
+              <p>2024-04-02</p>
+              <b>Average Temp:</b>
+              <p>14.6</p>
+            </div>
+            <div class="col-6" style="text-align: center">
+              <b>High:</b>
+              <p>45</p>
+              <b>Low: </b>
+              <p>22</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-12 col-sm-12" style="text-align: center">
+          <b>Percipitation: </b>
+          <p>39%</p>
+          <b>Wind</b>
+          <p>12mph</p>
+        </div>
+        <div class="col-lg-2 col-md-12 col-sm-12" style="text-align: center">
+          <b>Sunrise</b>
+          <p>6:51am</p>
+          <b>Sunset</b>
+          <p>7:56pm</p>
+        </div>
+      </div>
     </div>
 
     <script
