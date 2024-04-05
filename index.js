@@ -14,6 +14,8 @@ $(document).ready(async function () {
     console.log("GLOBAL WEATHER VAR:", weatherData);
     // Hide loading
     $(".loading-container").hide();
+
+    locationDisplay(weatherData.location);
   } catch (err) {
     console.log(err);
   }
@@ -70,10 +72,14 @@ async function getAPIData(lat, long) {
 // Displays
 
 // Display for location data
-function locationDisplay() {}
+function locationDisplay({ ...location }) {
+  console.log("DATA", location.name);
+  var element = document.getElementById("location-name");
+  element.innerHTML = location.name;
+}
 
 // Display for today's weather data
-function todayDisplay(data) {}
+function todayDisplay() {}
 
 // Display for forcast weather data
 function forcastDisplay() {}
