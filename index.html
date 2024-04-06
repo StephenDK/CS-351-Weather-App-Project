@@ -44,15 +44,13 @@
       </div>
     </nav>
 
-    <!-- Location Container -->
-    <div class="container" style="max-width: 80%">
+    <!-- Container -->
+    <div class="container" style="max-width: 85%">
       <!-- Location Card -->
-      <div class="row">
-        <div class="col-md-4 d-flex align-items-center justify-content-center">
-          <div
-            class="card"
-            style="width: 15rem; height: 24rem; margin: 5px 5px 5px 5px"
-          >
+      <div class="row d-flex align-items-stretch">
+        <!-- Column 1 -->
+        <div class="col d-flex align-items-center justify-content-center">
+          <div class="card" style="height: 100%">
             <img
               src="https://cdn.weatherapi.com/weather/64x64/day/116.png"
               class="card-img-top"
@@ -61,27 +59,19 @@
             />
             <div class="card-body">
               <h5 class="card-title"><span id="location-name"></span></h5>
-              <!--location.name, location.region-->
               <h6 class="card-subtitle mb-2 text-muted">
                 United States of America
               </h6>
-              <!--location.country-->
               <p class="card-text">2024-03-25, 11:30am</p>
-              <!--location.localtime-->
               <p class="card-text"><b>Latitude:</b> 39.55</p>
-              <!--location.lat-->
               <p class="card-text"><b>Longitude:</b> -123.44</p>
-              <!--location.lon-->
             </div>
           </div>
         </div>
 
-        <!-- Condition Card -->
-        <div class="col-md-4 d-flex align-items-center justify-content-center">
-          <div
-            class="card"
-            style="width: 15rem; height: 24rem; margin: 5px 5px 5px 5px"
-          >
+        <!-- Column 2 -->
+        <div class="col d-flex align-items-center justify-content-center">
+          <div class="card" style="height: 100%">
             <h5 class="card-header">Current Condition</h5>
             <div class="card-body">
               <h5 class="card-title">Sunny</h5>
@@ -93,12 +83,9 @@
           </div>
         </div>
 
-        <!-- Air Quality and Wind card -->
-        <div class="col-md-4 d-flex align-items-center justify-content-center">
-          <div
-            class="card"
-            style="width: 15rem; height: 24rem; margin: 5px 5px 5px 5px"
-          >
+        <!-- Column 3 -->
+        <div class="col d-flex align-items-center justify-content-center">
+          <div class="card" style="height: 100%">
             <h5 class="card-header">Atmosphere</h5>
             <div class="card-body">
               <h5 class="card-title">Wind</h5>
@@ -111,10 +98,16 @@
             </div>
           </div>
         </div>
+
+        <!-- Column 4 -->
+        <div class="col-5 d-flex">
+          <div><p>MAP</p></div>
+        </div>
       </div>
-      <h3 class="forcast-header">Forcast</h3>
 
       <!-- Forcast Section-->
+      <h3 class="forcast-header">Forcast</h3>
+
       <div class="row flex-column flex-md-row border">
         <div
           class="col-12 col-md-2 d-flex justify-content-center align-items-center"
