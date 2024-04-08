@@ -1,5 +1,6 @@
 // Global Variables
 const API_KEY = "592208bd50884c689f870435242502";
+const GOOGLE_MAP_API_KEY = "";
 var weatherData = {};
 var isLoading = true;
 
@@ -14,6 +15,12 @@ $(document).ready(async function () {
     console.log("GLOBAL WEATHER VAR:", weatherData);
     // Hide loading
     $(".loading-container").hide();
+
+    addGoogleMapToElement(
+      GOOGLE_MAP_API_KEY,
+      weatherData.location.lat,
+      weatherData.location.lon
+    );
 
     locationDisplay(weatherData.location);
   } catch (err) {
@@ -83,3 +90,20 @@ function todayDisplay() {}
 
 // Display for forcast weather data
 function forcastDisplay() {}
+
+// Initialize Map Display
+function addGoogleMapToElement(apiKey, latitude, longitude) {
+  var mapUrl = `https://www.google.com/maps/embed/v1/view?key=${apiKey}&center=${latitude},${longitude}&zoom=12`;
+
+  console.log("GOOGLE MAP URL", mapUrl);
+
+  var iframe = document.createElement("iframe");
+  iframe.setAttribute("width", "100%");
+  iframe.setAttribute("height", "100%");
+  iframe.setAttribute("frameborder", "0");
+  iframe.setAttribute("style", "border:0");
+  iframe.setAttribute("src", mapUrl);
+
+  var element = document.getElementById("google-map");
+  element.appendChild(iframe);
+}
