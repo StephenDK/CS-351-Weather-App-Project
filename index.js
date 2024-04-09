@@ -1,6 +1,6 @@
 // Global Variables
 const API_KEY = "592208bd50884c689f870435242502";
-const GOOGLE_MAP_API_KEY = "";
+
 var weatherData = {};
 var isLoading = true;
 

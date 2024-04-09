@@ -43,15 +43,18 @@ html {
   font-weight: 700;
   margin-bottom: 0px;
 }
+/* Style for search bar */
+.search-bar {
+  margin-bottom: 20px;
+}
 /* End of Navbar Styles */
 
 /*  Container Styles */
 .container {
   margin-top: 10px;
 }
-/* Style for search bar */
-.search-bar {
-  margin-bottom: 20px;
+.column-spacing {
+  padding: 0 5px 0 5px;
 }
 
 /* Forcast Header */
@@ -63,4 +66,13 @@ html {
 /* Forcast Row Styles */
 .border {
   border-style: solid;
+}
+
+/* Footer */
+.footer {
+  background-color: #f8f9fa;
+  padding: 10px 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
