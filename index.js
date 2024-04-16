@@ -1,6 +1,5 @@
 // Global Variables
 const API_KEY = "592208bd50884c689f870435242502";
-
 var weatherData = {};
 var isLoading = true;
 
@@ -24,6 +23,7 @@ $(document).ready(async function () {
 
     locationDisplay(weatherData.location);
     currentConditionDisplay(weatherData.current);
+    atmosphereDisplay(weatherData.current);
   } catch (err) {
     console.log(err);
   }
@@ -138,11 +138,11 @@ function atmosphereDisplay({ ...current }) {
   var air_carbon = document.getElementById("air-quality-carbon");
   var air_nitrogen = document.getElementById("air-quality-nitrogen");
 
-  windDirection.innerHTML = 
-  windMPH.innerHTML = 
-  windKPH.innerHTML = 
-  air_carbon.innerHTML = 
-  air_nitrogen.innerHTML = 
+  windDirection.innerHTML = current.wind_dir;
+  windMPH.innerHTML = current.wind_mph;
+  windKPH.innerHTML = current.wind_kph;
+  air_carbon.innerHTML = current.air_quality.co;
+  air_nitrogen.innerHTML = current.air_quality.no2;
 }
 
 // Display for forcast weather data
