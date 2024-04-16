@@ -18,13 +18,6 @@
   </head>
 
   <body>
-    <div class="loading-container">
-      <div id="loading">
-        <img id="cloud-image" src="photos/loading-cloud.png" alt="Loading..." />
-        <p id="loading-text">Loading...</p>
-      </div>
-    </div>
-
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <p class="nav-text">Weather App</p>
@@ -44,8 +37,15 @@
       </div>
     </nav>
 
+    <div class="loading-container">
+      <div id="loading">
+        <img id="cloud-image" src="photos/loading-cloud.png" alt="Loading..." />
+        <p id="loading-text">Loading...</p>
+      </div>
+    </div>
+
     <!-- Container -->
-    <div class="container" style="max-width: 85%">
+    <div class="container" style="max-width: 85%; flex: 1">
       <!-- Location Card -->
       <div class="row">
         <!-- Column 1 -->
@@ -60,13 +60,20 @@
               />
             </div>
             <div class="card-body">
-              <h5 class="card-title"><span id="location-name"></span></h5>
+              <h5 class="card-title">
+                <span id="location-name"></span>,
+                <span id="location-region"></span>
+              </h5>
               <h6 class="card-subtitle mb-2 text-muted">
-                United States of America
+                <span id="location-country"></span>
               </h6>
-              <p class="card-text">2024-03-25, 11:30am</p>
-              <p class="card-text"><b>Latitude:</b> 39.55</p>
-              <p class="card-text"><b>Longitude:</b> -123.44</p>
+              <p class="card-text"><span id="location-localtime"></span></p>
+              <p class="card-text">
+                <b>Latitude:</b> <span id="location-lat"></span>
+              </p>
+              <p class="card-text">
+                <b>Longitude:</b> <span id="location-lon"></span>
+              </p>
             </div>
           </div>
         </div>
@@ -76,11 +83,18 @@
           <div class="card flex-fill">
             <h5 class="card-header">Current Condition</h5>
             <div class="card-body">
-              <h5 class="card-title">Sunny</h5>
-              <p class="card-text">Temperature(C): 16.7</p>
-              <p class="card-text">Temperature(F): 45</p>
-              <p class="card-text">Humidity: 86</p>
-              <p class="card-text">Percipitation: 50%</p>
+              <h5 class="card-title"><span id="condition-text"></span></h5>
+              <p class="card-text">Temperature(C): <span id="temp_c"></span></p>
+              <p class="card-text">Temperature(F): <span id="temp_f"></span></p>
+              <p class="card-text">
+                Humidity: <span id="condition-humidity"></span>
+              </p>
+              <p class="card-text">
+                Precipitation: <span id="condition-precipitation"></span>
+              </p>
+              <p class="card-text">
+                Cloud Coverage: <span id="condition-cloud"></span>%
+              </p>
             </div>
           </div>
         </div>
@@ -91,12 +105,22 @@
             <h5 class="card-header">Atmosphere</h5>
             <div class="card-body">
               <h5 class="card-title">Wind</h5>
-              <p class="card-text">Wind Direction: NW</p>
-              <p class="card-text">Wind Speed(MPH): 9.8</p>
-              <p class="card-text">Wind Speed(KPH): 15.7</p>
+              <p class="card-text">
+                Wind Direction: <span id="current-windDirection"></span>
+              </p>
+              <p class="card-text">
+                Wind Speed(MPH): <span id="current-windMPH"></span>
+              </p>
+              <p class="card-text">
+                Wind Speed(KPH): <span id="current-windKPH"></span>
+              </p>
               <h5 class="card-title">Air</h5>
-              <p class="card-text">Carbon Monoxide: 243.6</p>
-              <p class="card-text">Nitrogen Dioxide: 345</p>
+              <p class="card-text">
+                Carbon Monoxide: <span id="air-quality-carbon"></span>
+              </p>
+              <p class="card-text">
+                Nitrogen Dioxide: <span id="air-quality-nitrogen"></span>
+              </p>
             </div>
           </div>
         </div>
