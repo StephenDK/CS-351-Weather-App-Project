@@ -1,5 +1,6 @@
 // Global Variables
 const API_KEY = "592208bd50884c689f870435242502";
+
 var weatherData = {};
 var isLoading = true;
 
@@ -24,6 +25,7 @@ $(document).ready(async function () {
     locationDisplay(weatherData.location);
     currentConditionDisplay(weatherData.current);
     atmosphereDisplay(weatherData.current);
+    forcastDisplayD1(weatherData.forecast.forecastday[0]);
   } catch (err) {
     console.log(err);
   }
@@ -146,4 +148,39 @@ function atmosphereDisplay({ ...current }) {
 }
 
 // Display for forcast weather data
-function forcastDisplay() {}
+function forcastDisplayD1({ ...day1 }) {
+  console.log("FORCAST DAY 1:", day1);
+  var img = document.getElementById("day1-img");
+  var date = document.getElementById("day1-date");
+  var averageTemp = document.getElementById("day1-averageTemp");
+  var high = document.getElementById("day1-high");
+  var low = document.getElementById("day1-low");
+  var precip = document.getElementById("day1-precipitation");
+  var wind = document.getElementById("day1-wind");
+  var sunrise = document.getElementById("day1-sunrise");
+  var sunset = document.getElementById("day1-sunset");
+
+  // Format Image URL
+  var modifiedURL = "https:" + day1.day.condition.icon;
+  // Format Date
+  var newDate = formatDate(day1.date);
+
+  img.src = modifiedURL;
+  date.innerHTML = newDate;
+  averageTemp.innerHTML = day1.day.avgtemp_f;
+  high.innerHTML = day1.day.maxtemp_f;
+  low.innerHTML = day1.day.mintemp_f;
+  precip.innerHTML = day1.day.totalprecip_in;
+  wind.innerHTML = day1.day.maxwind_mph;
+  sunrise.innerHTML = day1.astro.sunrise;
+  sunset.innerHTML = day1.astro.sunset;
+}
+
+// Helper Functions
+function formatDate(date) {
+  var valueArr = date.split("-");
+
+  var transformedDate = `${valueArr[1]}-${valueArr[2]}-${valueArr[0]}`;
+
+  return transformedDate;
+}
