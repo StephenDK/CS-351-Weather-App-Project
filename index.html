@@ -26,11 +26,16 @@
         <form class="form-inline my-2 my-lg-0">
           <input
             class="form-control mr-sm-2"
+            id="city-input"
             type="search"
             placeholder="Search"
             aria-label="Search"
           />
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          <button
+            class="btn btn-outline-success my-2 my-sm-0"
+            id="search-button"
+            type="submit"
+          >
             Search
           </button>
         </form>
@@ -53,9 +58,10 @@
           <div class="card flex-fill">
             <div class="d-flex justify-content-center align-items-center">
               <img
-                src="https://cdn.weatherapi.com/weather/64x64/day/116.png"
+                src=""
                 class="card-img-top"
                 alt="..."
+                id="location-img"
                 style="height: 100px; width: 100px"
               />
             </div>
@@ -175,38 +181,35 @@
         <div
           class="col-12 col-md-2 d-flex justify-content-center align-items-center"
         >
-          <img
-            src="https://cdn.weatherapi.com/weather/64x64/day/116.png"
-            alt="..."
-          />
+          <img id="day2-img" src="" alt="..." />
         </div>
         <div class="col-lg-6 col-md-10 col-sm-10">
           <div class="row">
             <div class="col-6" style="text-align: center">
               <b>Date:</b>
-              <p>2024-04-02</p>
+              <p><span id="day2-date"></span></p>
               <b>Average Temp:</b>
-              <p>14.6</p>
+              <p><span id="day2-averageTemp"></span></p>
             </div>
             <div class="col-6" style="text-align: center">
               <b>High:</b>
-              <p>45</p>
+              <p><span id="day2-high"></span></p>
               <b>Low: </b>
-              <p>22</p>
+              <p><span id="day2-low"></span></p>
             </div>
           </div>
         </div>
         <div class="col-lg-2 col-md-12 col-sm-12" style="text-align: center">
           <b>Percipitation: </b>
-          <p>39%</p>
+          <p><span id="day2-precipitation"></span></p>
           <b>Wind</b>
-          <p>12mph</p>
+          <p><span id="day2-wind"></span></p>
         </div>
         <div class="col-lg-2 col-md-12 col-sm-12" style="text-align: center">
           <b>Sunrise</b>
-          <p>6:51am</p>
+          <p><span id="day2-sunrise"></span></p>
           <b>Sunset</b>
-          <p>7:56pm</p>
+          <p><span id="day2-sunset"></span></p>
         </div>
       </div>
 
@@ -215,38 +218,35 @@
         <div
           class="col-12 col-md-2 d-flex justify-content-center align-items-center"
         >
-          <img
-            src="https://cdn.weatherapi.com/weather/64x64/day/116.png"
-            alt="..."
-          />
+          <img id="day3-img" src="" alt="..." />
         </div>
         <div class="col-lg-6 col-md-10 col-sm-10">
           <div class="row">
             <div class="col-6" style="text-align: center">
               <b>Date:</b>
-              <p>2024-04-02</p>
+              <p><span id="day3-date"></span></p>
               <b>Average Temp:</b>
-              <p>14.6</p>
+              <p><span id="day3-averageTemp"></span></p>
             </div>
             <div class="col-6" style="text-align: center">
               <b>High:</b>
-              <p>45</p>
+              <p><span id="day3-high"></span></p>
               <b>Low: </b>
-              <p>22</p>
+              <p><span id="day3-low"></span></p>
             </div>
           </div>
         </div>
         <div class="col-lg-2 col-md-12 col-sm-12" style="text-align: center">
           <b>Percipitation: </b>
-          <p>39%</p>
+          <p><span id="day3-precipitation"></span></p>
           <b>Wind</b>
-          <p>12mph</p>
+          <p><span id="day3-wind"></span></p>
         </div>
         <div class="col-lg-2 col-md-12 col-sm-12" style="text-align: center">
           <b>Sunrise</b>
-          <p>6:51am</p>
+          <p><span id="day3-sunrise"></span></p>
           <b>Sunset</b>
-          <p>7:56pm</p>
+          <p><span id="day3-sunset"></span></p>
         </div>
       </div>
     </div>
@@ -254,7 +254,9 @@
     <!-- Footer -->
     <footer class="footer">
       <div class="container text-center">
-        <span class="text-muted">Weather App &copy; 2024 by Stephen Klein</span>
+        <span class="text-muted"
+          ><b>Weather App &copy; 2024 by Stephen Klein</b></span
+        >
       </div>
     </footer>
     <!-- End of Footer -->

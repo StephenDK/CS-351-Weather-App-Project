@@ -22,18 +22,30 @@ $(document).ready(async function () {
       weatherData.location.lon
     );
 
-    locationDisplay(weatherData.location);
+    locationDisplay(weatherData.location, weatherData.current.condition.icon);
     currentConditionDisplay(weatherData.current);
     atmosphereDisplay(weatherData.current);
     forcastDisplayD1(weatherData.forecast.forecastday[0]);
+    forcastDisplayD2(weatherData.forecast.forecastday[1]);
+    forcastDisplayD3(weatherData.forecast.forecastday[2]);
   } catch (err) {
     console.log(err);
   }
-
-  // Display Data
 });
 
+// Event Listner for search button
+document
+  .getElementById("search-button")
+  .addEventListener("click", function (event) {
+    event.preventDefault();
+    // Get value from input
+    var cityName = document.getElementById("city-input").value;
+    console.log("INPUT VALUE", cityName);
+    fetchWeatherData(cityName);
+  });
+
 // Functions
+// Get location from user
 function getLocation() {
   return new Promise((resolve, reject) => {
     if (navigator.geolocation) {
@@ -79,6 +91,38 @@ async function getAPIData(lat, long) {
   }
 }
 
+async function fetchWeatherData(cityName) {
+  try {
+    const request = await fetch(
+      `http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${cityName}&days=3&aqi=yes&alerts=no`
+    );
+    const data = await request.json();
+
+    weatherData = data;
+    console.log("DATA RECEIVED");
+    updateUI(weatherData);
+  } catch (err) {
+    console.log("BAD REQUEST");
+    console.log(err);
+  }
+}
+
+function updateUI(weatherData) {
+  console.log("UPDATING DATA");
+  locationDisplay(weatherData.location, weatherData.current.condition.icon);
+
+  // Update current condition display
+  currentConditionDisplay(weatherData.current);
+
+  // Update atmosphere display
+  atmosphereDisplay(weatherData.current);
+
+  // Update forecast display
+  forcastDisplayD1(weatherData.forecast.forecastday[0]);
+  forcastDisplayD2(weatherData.forecast.forecastday[1]);
+  forcastDisplayD3(weatherData.forecast.forecastday[2]);
+}
+
 // Initialize Map Display
 function addGoogleMapToElement(apiKey, latitude, longitude) {
   var mapUrl = `https://www.google.com/maps/embed/v1/view?key=${apiKey}&center=${latitude},${longitude}&zoom=12`;
@@ -97,14 +141,16 @@ function addGoogleMapToElement(apiKey, latitude, longitude) {
 }
 
 // Display location data
-function locationDisplay({ ...location }) {
+function locationDisplay({ ...location }, imgURL) {
   console.log("DATA", location.name);
+  var img = document.getElementById("location-img");
   var name = document.getElementById("location-name");
   var country = document.getElementById("location-country");
   var region = document.getElementById("location-region");
   var localtime = document.getElementById("location-localtime");
   var lat = document.getElementById("location-lat");
   var lon = document.getElementById("location-lon");
+  img.src = formatImgURL(imgURL);
   name.innerHTML = location.name;
   region.innerHTML = location.region;
   country.innerHTML = location.country;
@@ -147,7 +193,7 @@ function atmosphereDisplay({ ...current }) {
   air_nitrogen.innerHTML = current.air_quality.no2;
 }
 
-// Display for forcast weather data
+// Display for forcast day 1 weather data
 function forcastDisplayD1({ ...day1 }) {
   console.log("FORCAST DAY 1:", day1);
   var img = document.getElementById("day1-img");
@@ -160,12 +206,10 @@ function forcastDisplayD1({ ...day1 }) {
   var sunrise = document.getElementById("day1-sunrise");
   var sunset = document.getElementById("day1-sunset");
 
-  // Format Image URL
-  var modifiedURL = "https:" + day1.day.condition.icon;
   // Format Date
   var newDate = formatDate(day1.date);
 
-  img.src = modifiedURL;
+  img.src = formatImgURL(day1.day.condition.icon);
   date.innerHTML = newDate;
   averageTemp.innerHTML = day1.day.avgtemp_f;
   high.innerHTML = day1.day.maxtemp_f;
@@ -176,7 +220,66 @@ function forcastDisplayD1({ ...day1 }) {
   sunset.innerHTML = day1.astro.sunset;
 }
 
+//
+// Display for forcast day 2 weather data
+function forcastDisplayD2({ ...day2 }) {
+  console.log("FORCAST DAY 2:", day2);
+  var img = document.getElementById("day2-img");
+  var date = document.getElementById("day2-date");
+  var averageTemp = document.getElementById("day2-averageTemp");
+  var high = document.getElementById("day2-high");
+  var low = document.getElementById("day2-low");
+  var precip = document.getElementById("day2-precipitation");
+  var wind = document.getElementById("day2-wind");
+  var sunrise = document.getElementById("day2-sunrise");
+  var sunset = document.getElementById("day2-sunset");
+
+  // Format Date
+  var newDate = formatDate(day2.date);
+
+  img.src = formatImgURL(day2.day.condition.icon);
+  date.innerHTML = newDate;
+  averageTemp.innerHTML = day2.day.avgtemp_f;
+  high.innerHTML = day2.day.maxtemp_f;
+  low.innerHTML = day2.day.mintemp_f;
+  precip.innerHTML = day2.day.totalprecip_in;
+  wind.innerHTML = day2.day.maxwind_mph;
+  sunrise.innerHTML = day2.astro.sunrise;
+  sunset.innerHTML = day2.astro.sunset;
+}
+
+// Display for forcast day 3 weather data
+function forcastDisplayD3({ ...day3 }) {
+  console.log("FORCAST DAY 3:", day3);
+  var img = document.getElementById("day3-img");
+  var date = document.getElementById("day3-date");
+  var averageTemp = document.getElementById("day3-averageTemp");
+  var high = document.getElementById("day3-high");
+  var low = document.getElementById("day3-low");
+  var precip = document.getElementById("day3-precipitation");
+  var wind = document.getElementById("day3-wind");
+  var sunrise = document.getElementById("day3-sunrise");
+  var sunset = document.getElementById("day3-sunset");
+
+  // Format Date
+  var newDate = formatDate(day3.date);
+
+  img.src = formatImgURL(day3.day.condition.icon);
+  date.innerHTML = newDate;
+  averageTemp.innerHTML = day3.day.avgtemp_f;
+  high.innerHTML = day3.day.maxtemp_f;
+  low.innerHTML = day3.day.mintemp_f;
+  precip.innerHTML = day3.day.totalprecip_in;
+  wind.innerHTML = day3.day.maxwind_mph;
+  sunrise.innerHTML = day3.astro.sunrise;
+  sunset.innerHTML = day3.astro.sunset;
+}
+
 // Helper Functions
+function formatImgURL(url) {
+  return `https:${url}`;
+}
+
 function formatDate(date) {
   var valueArr = date.split("-");
 
