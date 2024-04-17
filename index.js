@@ -121,11 +121,21 @@ function updateUI(weatherData) {
   forcastDisplayD1(weatherData.forecast.forecastday[0]);
   forcastDisplayD2(weatherData.forecast.forecastday[1]);
   forcastDisplayD3(weatherData.forecast.forecastday[2]);
+  // Update Map
+  addGoogleMapToElement(
+    GOOGLE_MAP_API_KEY,
+    weatherData.location.lat,
+    weatherData.location.lon
+  );
 }
 
 // Initialize Map Display
 function addGoogleMapToElement(apiKey, latitude, longitude) {
   var mapUrl = `https://www.google.com/maps/embed/v1/view?key=${apiKey}&center=${latitude},${longitude}&zoom=12`;
+
+  // Remove existing iframe
+  var mapElement = document.getElementById("google-map");
+  mapElement.innerHTML = "";
 
   console.log("GOOGLE MAP URL", mapUrl);
 
