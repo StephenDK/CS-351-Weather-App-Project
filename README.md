@@ -9,7 +9,6 @@ Welcome to the Weather App! This project aims to provide a simple and intuitive 
 <li>Weather Data Fetching: The app interacts with a publicly available weather API to fetch the latest weather data.</li>
 <li>Dynamic Presentation: Weather information is presented in a visually appealing manner using HTML and CSS.</li>
 <li>Background Image Change: The app may feature dynamic background image changes according to the current weather conditions, enhancing user experience.</li>
-<li>Searchable History: Users may have the option to access a searchable history of their previous weather searches, making it convenient to review past locations.</li>
 </ul>
 
 <h3><b>Technologies Used</b></h3>
@@ -20,15 +19,18 @@ Welcome to the Weather App! This project aims to provide a simple and intuitive 
 </ul>
 
 ## Setup Instructions
+
 1. **Clone the Repository**: Clone this repository to your local machine using the following command:
-    ```bash
-    git clone <repository-url>
-    ```
+
+   ```bash
+   git clone <repository-url>
+   ```
 
 2. **Navigate to Directory**: Move into the directory containing the Weather App files:
-    ```bash
-    cd weather-app
-    ```
+
+   ```bash
+   cd weather-app
+   ```
 
 3. **Open in Browser**: Open the `index.html` file in your preferred web browser to view the Weather App.
 
@@ -36,7 +38,6 @@ Welcome to the Weather App! This project aims to provide a simple and intuitive 
 <ol type="1">
 <li>Enter Location: Type the location for which you want to check the weather into the search bar.</li>
 <li>View Weather Information: Once you've entered the location, the app will fetch the latest weather data and display it on the screen.</li>
-<li>Explore Features: Feel free to explore additional features such as background image changes or accessing the search history.</li>
 </ol>
 
 <h3><b>Contributing</b></h3>
