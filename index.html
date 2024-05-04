@@ -44,8 +44,24 @@
 
     <div class="loading-container">
       <div id="loading">
-        <img id="cloud-image" src="photos/loading-cloud.png" alt="Loading..." />
+        <img
+          id="cloud-image"
+          src="photos/loading-cloud.png"
+          alt="Loading Images"
+        />
         <p id="loading-text">Loading...</p>
+      </div>
+    </div>
+
+    <div class="container mt-3">
+      <!-- Bootstrap alert to display error messages -->
+      <div
+        id="error-alert"
+        class="alert alert-danger alert-dismissible fade show"
+        role="alert"
+        style="display: none"
+      >
+        <span id="error-message"></span>
       </div>
     </div>
 
@@ -257,8 +273,11 @@
     <footer class="footer">
       <div class="container text-center">
         <span class="text-muted"
-          ><b>Weather App &copy; 2024 by Stephen Klein</b></span
-        >
+          ><b
+            >Weather App &copy; 2024 by Stephen Klein |
+            <img src="photos/github-link.svg" alt="GitHub Logo"
+          /></b>
+        </span>
       </div>
     </footer>
     <!-- End of Footer -->

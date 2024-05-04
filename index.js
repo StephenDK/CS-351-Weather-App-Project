@@ -3,18 +3,18 @@ const API_KEY = "592208bd50884c689f870435242502";
 
 var weatherData = {};
 var isLoading = true;
+var interValID;
 
 // On document load
 $(document).ready(async function () {
   // Show laoding
   $(".loading-container").show();
-
+  // Start image change loop after content is loaded
+  startImageChangeLoop();
   try {
     // API Call
     weatherData = await getLocation();
     console.log("GLOBAL WEATHER VAR:", weatherData);
-    // Hide loading
-    $(".loading-container").hide();
 
     addGoogleMapToElement(
       GOOGLE_MAP_API_KEY,
@@ -28,6 +28,9 @@ $(document).ready(async function () {
     forcastDisplayD1(weatherData.forecast.forecastday[0]);
     forcastDisplayD2(weatherData.forecast.forecastday[1]);
     forcastDisplayD3(weatherData.forecast.forecastday[2]);
+
+    $(".loading-container").hide();
+    clearInterval(interValID);
   } catch (err) {
     console.log(err);
   }
@@ -40,7 +43,6 @@ document
     event.preventDefault();
     // Get value from input
     var cityName = document.getElementById("city-input").value;
-    console.log("INPUT VALUE", cityName);
     fetchWeatherData(cityName);
   });
 
@@ -52,14 +54,11 @@ function getLocation() {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
-          console.log("Latitude: " + latitude);
-          console.log("Longitude: " + longitude);
           getAPIData(latitude, longitude)
             .then((data) => resolve(data))
             .catch((error) => reject(error));
         },
         (error) => {
-          console.error("Error getting location:", error);
           getAPIData()
             .then((data) => resolve(data))
             .catch((error) => reject(error));
@@ -81,7 +80,6 @@ async function getAPIData(lat, long) {
       (lat && long
         ? `&q=${lat},${long}&days=3&aqi=yes&alerts=no`
         : `&q=Hayward&days=3&aqi=yes&alerts=no`);
-    console.log(apiURL);
     const response = await fetch(apiURL);
     const data = await response.json();
     return data;
@@ -91,6 +89,7 @@ async function getAPIData(lat, long) {
   }
 }
 
+// Fetch Wather Data from User Input
 async function fetchWeatherData(cityName) {
   try {
     const request = await fetch(
@@ -99,16 +98,16 @@ async function fetchWeatherData(cityName) {
     const data = await request.json();
 
     weatherData = data;
-    console.log("DATA RECEIVED");
+
     updateUI(weatherData);
   } catch (err) {
-    console.log("BAD REQUEST");
     console.log(err);
+    updateUIError("The city you entered cannot be found.");
   }
 }
 
+// Update Every UI Component with Searched City Data
 function updateUI(weatherData) {
-  console.log("UPDATING DATA");
   locationDisplay(weatherData.location, weatherData.current.condition.icon);
 
   // Update current condition display
@@ -137,8 +136,6 @@ function addGoogleMapToElement(apiKey, latitude, longitude) {
   var mapElement = document.getElementById("google-map");
   mapElement.innerHTML = "";
 
-  console.log("GOOGLE MAP URL", mapUrl);
-
   var iframe = document.createElement("iframe");
   iframe.setAttribute("width", "100%");
   iframe.setAttribute("height", "100%");
@@ -150,9 +147,20 @@ function addGoogleMapToElement(apiKey, latitude, longitude) {
   element.appendChild(iframe);
 }
 
+// Function for UI error message if city input is bad
+function updateUIError(errorMessage) {
+  // Display error message
+  document.getElementById("error-message").innerText = errorMessage;
+  document.getElementById("error-alert").style.display = "block";
+
+  // Hide the error message after 4 seconds
+  setTimeout(function () {
+    document.getElementById("error-alert").style.display = "none";
+  }, 4000);
+}
+
 // Display location data
 function locationDisplay({ ...location }, imgURL) {
-  console.log("DATA", location.name);
   var img = document.getElementById("location-img");
   var name = document.getElementById("location-name");
   var country = document.getElementById("location-country");
@@ -205,7 +213,6 @@ function atmosphereDisplay({ ...current }) {
 
 // Display for forcast day 1 weather data
 function forcastDisplayD1({ ...day1 }) {
-  console.log("FORCAST DAY 1:", day1);
   var img = document.getElementById("day1-img");
   var date = document.getElementById("day1-date");
   var averageTemp = document.getElementById("day1-averageTemp");
@@ -233,7 +240,6 @@ function forcastDisplayD1({ ...day1 }) {
 //
 // Display for forcast day 2 weather data
 function forcastDisplayD2({ ...day2 }) {
-  console.log("FORCAST DAY 2:", day2);
   var img = document.getElementById("day2-img");
   var date = document.getElementById("day2-date");
   var averageTemp = document.getElementById("day2-averageTemp");
@@ -260,7 +266,6 @@ function forcastDisplayD2({ ...day2 }) {
 
 // Display for forcast day 3 weather data
 function forcastDisplayD3({ ...day3 }) {
-  console.log("FORCAST DAY 3:", day3);
   var img = document.getElementById("day3-img");
   var date = document.getElementById("day3-date");
   var averageTemp = document.getElementById("day3-averageTemp");
@@ -283,6 +288,32 @@ function forcastDisplayD3({ ...day3 }) {
   wind.innerHTML = day3.day.maxwind_mph;
   sunrise.innerHTML = day3.astro.sunrise;
   sunset.innerHTML = day3.astro.sunset;
+}
+
+function startImageChangeLoop() {
+  // Array of images
+  var images = [
+    "photos/loading-cloud.png",
+    "photos/loading-rainCloud.png",
+    "photos/loading-sun.png",
+  ];
+
+  // Cloud image hook
+  const cloudImage = document.getElementById("cloud-image");
+  var currentIndex = 0;
+
+  function changeImage() {
+    currentIndex = (currentIndex + 1) % images.length;
+    cloudImage.classList.add("hidden"); // Hide current image
+    setTimeout(() => {
+      // Set timeout to allow fade out animation
+      cloudImage.src = images[currentIndex];
+      cloudImage.classList.remove("hidden"); // Show new image
+    }, 300); // Adjust timing to match transition duration
+  }
+
+  // Change image interval (3 seconds)
+  interValID = setInterval(changeImage, 3000);
 }
 
 // Helper Functions
